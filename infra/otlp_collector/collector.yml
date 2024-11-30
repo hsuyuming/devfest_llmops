@@ -1,0 +1,31 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4200
+      grpc:
+        endpoint: 0.0.0.0:4201
+
+processors:
+  batch:
+    timeout: 1s
+  resourcedetection:
+    detectors: [gcp]
+    timeout: 10s
+
+exporters:
+  googlecloudpubsub:
+    project: <project>
+    topic: <topic>
+  googlecloud:
+    project: <project>
+extensions:
+  health_check:
+
+service:
+  extensions: ["health_check"]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [resourcedetection]
+      exporters: [googlecloud, googlecloudpubsub]

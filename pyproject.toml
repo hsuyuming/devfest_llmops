@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "devfest-llmops"
+version = "0.1.0"
+description = "This is the example code for devfest llmops demo"
+authors = ["ABE HSU <abego452@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+fastapi = {version = ">=0.115.5", extras = ["standard"]}
+langchain-google-vertexai = ">=2.0.7"
+cachetools = ">=5.0.0"
+opentelemetry-instrumentation-fastapi = ">=0.49b2"
+openinference-instrumentation-langchain = ">=0.1.29"
+opentelemetry-exporter-otlp-proto-http = ">=1.28.2"
+python-dotenv = ">=1.0.1"
+langchain-google-community = ">=2.0.2"
+google-cloud-discoveryengine = ">=0.13.4"
+opentelemetry-exporter-gcp-trace = ">=1.7.0"
+
+
+[tool.poetry.group.dev.dependencies]
+arize-phoenix = ">=5.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
